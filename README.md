@@ -6,7 +6,7 @@
 
 ## Download and install (already Magisk-rooted)
 
-1. Download **[NOVA-M1M2-TRIGGER-REPLACEMENT-MAGISK-v3.zip](module/NOVA-M1M2-TRIGGER-REPLACEMENT-MAGISK-v3.zip)** onto your Nova (use the file itself, **not** GitHub's *Download ZIP* for the entire repository).
+1. Download **[NOVA-M1M2-TRIGGER-REPLACEMENT-MAGISK-v4.zip](module/NOVA-M1M2-TRIGGER-REPLACEMENT-MAGISK-v4.zip)** onto your Nova (use the file itself, **not** GitHub's *Download ZIP* for the entire repository).
 2. In **Retroid Handheld Settings**, set **M1 = Default** and **M2 = Default**. Leave both at Default whenever this module is enabled. Do **not** first remap them to L2/R2 in Retroid's settings.
 3. Open **Magisk → Modules → Install from storage**, select `NOVA-M1M2-TRIGGER-REPLACEMENT-MAGISK-v3.zip`, and allow the installation to finish.
 4. **Reboot** the Nova once.
