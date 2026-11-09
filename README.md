@@ -23,7 +23,7 @@ The Nova presents an Xbox Wireless Controller (**vendor/product 2022:3002**) (Xb
 | **M1** | `BTN_C` (306) | `BUTTON_L2` plus full-range L2 analog trigger |
 | **M2** | `BTN_Z` (309) | `BUTTON_R2` plus full-range R2 analog trigger |
 
-A device-specific `Vendor_2022_Product_3002.kl` (Xbox Controller Style) or `Vendor_2022_Product_3002.kl` (Retro Controller Style)  maps keycodes 306/309 to `BUTTON_L2`/`BUTTON_R2` while preserving the Nova's other mappings. A small native **root boot service** watches the original controller and injects full pressure (32767) or release (0) into its existing `ABS_BRAKE`/`ABS_GAS` axes. The key layout exposes these as Android's `LTRIGGER`/`RTRIGGER`. The original controller identity is retained. The changes are *systemless*—no controller firmware or stock partitions are flashed.
+A device-specific `Vendor_2022_Product_3002.kl` (Xbox Controller Style) or `Vendor_2022_Product_3001.kl` (Retro Controller Style)  maps keycodes 306/309 to `BUTTON_L2`/`BUTTON_R2` while preserving the Nova's other mappings. A small native **root boot service** watches the original controller and injects full pressure (32767) or release (0) into its existing `ABS_BRAKE`/`ABS_GAS` axes. The key layout exposes these as Android's `LTRIGGER`/`RTRIGGER`. The original controller identity is retained. The changes are *systemless*—no controller firmware or stock partitions are flashed.
 
 Because M1/M2 are physical digital buttons, the resulting triggers have no variable pressure (only 0% or 100%).
 
@@ -37,7 +37,7 @@ Changing Retroid's built-in M-button settings while the module is enabled is *no
 
 - If the buttons still do not work after reboot, verify both are set to **Default** and the Magisk module is enabled.
 - With root ADB, inspect `/data/adb/modules/nova_m1m2_triggers/bridge.log` to diagnose the boot service.
-- This 4 package was built for the **Nova** and its controller identity **2022:3002** (Xbox Controller Style) or **2022/3001** (Retro Controller Style); scan codes and firmware behavior may differ on other revisions/devices.
+- This V4 package was built for the **Nova** and its controller identity **2022:3002** (Xbox Controller Style) or **2022/3001** (Retro Controller Style); scan codes and firmware behavior may differ on other revisions/devices.
 - V1/V2 test builds did not work. V3 does not work with Retro Controller Style. **Use V4**
 - No guarantee of compatibility with every Android game; tested on one Nova with GameNative and an independent Android controller tester.
 
