@@ -2,7 +2,7 @@
 
 **A reversible, systemless Magisk module for a Retroid Pocket Nova with the flat-back mod (physical L2/R2 triggers removed).** M1 becomes L2 and M2 becomes R2 throughout Android, without per-game profiles, a paid mapper, or a second virtual controller.
 
-**Tested working on November 7, 2026:** a Retroid Pocket Nova running **stock Android 13 and Magisk 31.1**. After reboot, both GameNative and an independent gamepad tester recognized the remapped triggers. The Retroid **built-in keypad test still labels the physical buttons M1/M2**; that is expected and does not mean the fix failed.
+**Tested working on November 9, 2026:** a Retroid Pocket Nova running **stock Android 13 and Magisk 31.1**. After reboot, both GameNative and an independent gamepad tester recognized the remapped triggers. The Retroid **built-in keypad test still labels the physical buttons M1/M2**; that is expected and does not mean the fix failed. Works with both Xbox and Retro Controller Styles. 
 
 ## Download and install (already Magisk-rooted)
 
@@ -16,14 +16,14 @@
 
 ### How it works
 
-The Nova presents an Xbox Wireless Controller (**vendor/product 2022:3002**) to Android.
+The Nova presents an Xbox Wireless Controller (**vendor/product 2022:3002**) (Xbox Controller Style) or Retroid Pocket Controller (**vendor/product 2022:3001**) (Retro Controller Style) to Android.
 
 | Physical button | Original Linux event in Retroid Default mode | Android output with module |
 | --- | --- | --- |
 | **M1** | `BTN_C` (306) | `BUTTON_L2` plus full-range L2 analog trigger |
 | **M2** | `BTN_Z` (309) | `BUTTON_R2` plus full-range R2 analog trigger |
 
-A device-specific `Vendor_2022_Product_3002.kl` maps keycodes 306/309 to `BUTTON_L2`/`BUTTON_R2` while preserving the Nova's other mappings. A small native **root boot service** watches the original controller and injects full pressure (32767) or release (0) into its existing `ABS_BRAKE`/`ABS_GAS` axes. The key layout exposes these as Android's `LTRIGGER`/`RTRIGGER`. The original controller identity is retained. The changes are *systemless*—no controller firmware or stock partitions are flashed.
+A device-specific `Vendor_2022_Product_3002.kl` (Xbox Controller Style) or `Vendor_2022_Product_3002.kl` (Retro Controller Style)  maps keycodes 306/309 to `BUTTON_L2`/`BUTTON_R2` while preserving the Nova's other mappings. A small native **root boot service** watches the original controller and injects full pressure (32767) or release (0) into its existing `ABS_BRAKE`/`ABS_GAS` axes. The key layout exposes these as Android's `LTRIGGER`/`RTRIGGER`. The original controller identity is retained. The changes are *systemless*—no controller firmware or stock partitions are flashed.
 
 Because M1/M2 are physical digital buttons, the resulting triggers have no variable pressure (only 0% or 100%).
 
@@ -48,10 +48,10 @@ The v3 temporary native test recorded **28 M1 events, 26 M2 events, 28 L2-axis w
 SHA-256 of the **Magisk-installable ZIP**:
 
 ```
-f6302eb58537a7d5a4ba19c42bd28fbc8e1da047c994cf1fcf7bb03a8093ebb1
+56f43f69aacee7694682fd626df94116396fa2036651c886003a43709188f11c
 ```
 
-The matching full PC diagnostic/installer bundle has SHA-256 `bcafff208e21af7b7a62d27381fc2da7edf1d87915a7af23bae74828b5c53776` (not the Magisk-installable ZIP).
+The matching full PC diagnostic/installer bundle has SHA-256 `e144740a44934a54e99a04e574cb22c8238f859b3cad8e9f4a6273233dbd4a50` (not the Magisk-installable ZIP).
 
 ## Source and licensing
 
