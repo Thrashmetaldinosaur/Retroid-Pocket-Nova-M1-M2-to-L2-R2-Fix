@@ -2,13 +2,13 @@
 
 **A reversible, systemless Magisk module for a Retroid Pocket Nova with the flat-back mod (physical L2/R2 triggers removed).** M1 becomes L2 and M2 becomes R2 throughout Android, without per-game profiles, a paid mapper, or a second virtual controller.
 
-**Tested working on November 9, 2026:** a Retroid Pocket Nova running **stock Android 13 and Magisk 31.1**. After reboot, both GameNative and an independent gamepad tester recognized the remapped triggers. The Retroid **built-in keypad test still labels the physical buttons M1/M2**; that is expected and does not mean the fix failed. Works with both Xbox and Retro Controller Styles. 
+**Tested working on November 7, 2026 (v3, Xbox Controller Style):** a Retroid Pocket Nova running **stock Android 13 and Magisk 31.1**. After reboot, both GameNative and an independent gamepad tester recognized the remapped triggers. The Retroid **built-in keypad test still labels the physical buttons M1/M2**; that is expected and does not mean the fix failed. v4 adds Retro Controller Style support (contributed by @thomas0465, reported working November 9, 2026).
 
 ## Download and install (already Magisk-rooted)
 
 1. Download **[NOVA-M1M2-TRIGGER-REPLACEMENT-MAGISK-v4.zip](module/NOVA-M1M2-TRIGGER-REPLACEMENT-MAGISK-v4.zip)** onto your Nova (use the file itself, **not** GitHub's *Download ZIP* for the entire repository).
 2. In **Retroid Handheld Settings**, set **M1 = Default** and **M2 = Default**. Leave both at Default whenever this module is enabled. Do **not** first remap them to L2/R2 in Retroid's settings.
-3. Open **Magisk → Modules → Install from storage**, select `NOVA-M1M2-TRIGGER-REPLACEMENT-MAGISK-v3.zip`, and allow the installation to finish.
+3. Open **Magisk → Modules → Install from storage**, select `NOVA-M1M2-TRIGGER-REPLACEMENT-MAGISK-v4.zip`, and allow the installation to finish.
 4. **Reboot** the Nova once.
 5. Test M1/M2 in a third-party controller tester or a game. M1 should act as L2 and M2 as R2; each trigger is either **fully pressed or released**.
 
@@ -37,7 +37,7 @@ Changing Retroid's built-in M-button settings while the module is enabled is *no
 
 - If the buttons still do not work after reboot, verify both are set to **Default** and the Magisk module is enabled.
 - With root ADB, inspect `/data/adb/modules/nova_m1m2_triggers/bridge.log` to diagnose the boot service.
-- This V4 package was built for the **Nova** and its controller identity **2022:3002** (Xbox Controller Style) or **2022/3001** (Retro Controller Style); scan codes and firmware behavior may differ on other revisions/devices.
+- This V4 package was built for the **Nova** and its controller identity **2022:3002** (Xbox Controller Style) or **2022:3001** (Retro Controller Style); scan codes and firmware behavior may differ on other revisions/devices.
 - V1/V2 test builds did not work. V3 does not work with Retro Controller Style. **Use V4**
 - No guarantee of compatibility with every Android game; tested on one Nova with GameNative and an independent Android controller tester.
 
@@ -48,7 +48,7 @@ The v3 temporary native test recorded **28 M1 events, 26 M2 events, 28 L2-axis w
 SHA-256 of the V4 **Magisk-installable ZIP**:
 
 ```
-56f43f69aacee7694682fd626df94116396fa2036651c886003a43709188f11c
+01e70104cd10543c5648dae7f46dc41d40146105a2c9a9f7e8185facb5b1cdd1
 ```
 
 The matching full PC diagnostic/installer bundle has SHA-256 `e144740a44934a54e99a04e574cb22c8238f859b3cad8e9f4a6273233dbd4a50` (not the Magisk-installable ZIP).
