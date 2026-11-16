@@ -1,5 +1,6 @@
 #!/system/bin/sh
 # Nova-only native button-to-axis bridge; doesn't create a virtual controller.
+# Works with both the "xbox" (2022:3002) and "retro" (2022:3001) controller styles.
 MODDIR=${0%/*}
 BIN="$MODDIR/bin/nova_m1m2_native_v3"
 LOG="$MODDIR/bridge.log"
@@ -17,11 +18,14 @@ while [ ! -e "$MODDIR/disable" ]; do
     NODE=''
     for p in /sys/class/input/event*/device/name; do
         [ -r "$p" ] || continue
-        [ "$(cat "$p" 2>/dev/null)" = 'Xbox Wireless Controller' ] || continue
         base=${p%/device/name}
+        NAME=$(cat "$p" 2>/dev/null)
         VEN=$(cat "$base/device/id/vendor" 2>/dev/null)
         PROD=$(cat "$base/device/id/product" 2>/dev/null)
-        [ "$VEN" = 2022 ] && [ "$PROD" = 3002 ] || continue
+        case "$NAME|$VEN|$PROD" in
+            'Xbox Wireless Controller|2022|3002'|'Retroid Pocket Controller|2022|3001') ;;
+            *) continue ;;
+        esac
         NODE="/dev/input/${base##*/}"
         break
     done
